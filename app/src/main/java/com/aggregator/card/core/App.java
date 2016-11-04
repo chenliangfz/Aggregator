@@ -2,11 +2,12 @@ package com.aggregator.card.core;
 
 import android.app.Application;
 
-import com.aggregator.card.core.component.AppComponent;
-import com.aggregator.card.core.module.AppModule;
+import com.aggregator.card.core.inject.component.AppComponent;
+import com.aggregator.card.core.inject.component.DaggerAppComponent;
+import com.aggregator.card.core.inject.module.AppModule;
 
 /**
- * Created by ChenLiang on 16/9/30.
+ * Created by ChenLiang on 16/11/4.
  */
 
 public class App extends Application {

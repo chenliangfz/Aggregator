@@ -1,4 +1,4 @@
-package com.aggregator.card.core.module;
+package com.aggregator.card.core.inject.module;
 
 import android.content.Context;
 
@@ -24,9 +24,6 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * Created by ChenLiang on 16/10/14.
- */
 @Module
 public class ApiModule {
 

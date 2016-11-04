@@ -1,4 +1,4 @@
-package com.aggregator.card.core.module;
+package com.aggregator.card.core.inject.module;
 
 import android.content.Context;
 
@@ -11,9 +11,6 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 
-/**
- * 提供了AppComponent里的需要注入的对象, @Provides 类似 @Inject
- */
 @Module
 public class AppModule {
 
