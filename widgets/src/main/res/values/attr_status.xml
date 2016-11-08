@@ -12,6 +12,4 @@
         <attr name="layout_failed" format="integer" />
     </declare-styleable>
 
-
-    <attr name="statusLayoutDefStyle" format="reference"/>
 </resources>

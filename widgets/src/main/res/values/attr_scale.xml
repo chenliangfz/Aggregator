@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="SquareLayout">
+        <attr name="ratio" format="float"/>
+        <attr name="ProportionW" format="integer"/>
+        <attr name="ProportionH" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="SquareImage">
+        <attr name="mode">
+            <flag name="mode_h" value="0x1"/>
+            <flag name="mode_w" value="0x2"/>
+        </attr>
+    </declare-styleable>
+</resources>
