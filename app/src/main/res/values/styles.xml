@@ -9,4 +9,12 @@
         <item name="android:actionBarSize">48dp</item>
     </style>
 
+
+    <style name="DefaultSmartStyle">
+        <item name="layout_loading">@layout/layout_default_loading</item>
+        <item name="layout_empty">@layout/layout_default_failed</item>
+        <item name="layout_network_error">@layout/layout_default_failed</item>
+        <item name="layout_failed">@layout/layout_default_failed</item>
+    </style>
+
 </resources>

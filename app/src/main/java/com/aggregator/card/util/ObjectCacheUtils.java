@@ -12,39 +12,6 @@ import java.io.StreamCorruptedException;
 
 public class ObjectCacheUtils {
 
-    public static void cacheObjectToFile(String filePath, Object obj) {
-        if (obj == null) {
-            return;
-        }
-        FileOutputStream fos = null;
-        ObjectOutputStream oos = null;
-        File file = null;
-        try {
-            file = FileUtil.createFile(filePath);
-            fos = new FileOutputStream(file);
-            oos = new ObjectOutputStream(fos);
-            oos.writeObject(obj);
-        } catch (Exception e) {
-            e.printStackTrace();
-            file.delete();
-        } finally {
-            if (fos != null) {
-                try {
-                    fos.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (oos != null) {
-                try {
-                    oos.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
     public static Object readObjectFromFile(String filePath) {
         File file = new File(filePath);
         if (!file.exists()) {

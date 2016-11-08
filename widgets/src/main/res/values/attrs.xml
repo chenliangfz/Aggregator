@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="StatusLayout">
+        <!--正在加载-->
+        <attr name="layout_loading" format="integer" />
+        <!--无内容-->
+        <attr name="layout_empty" format="integer" />
+        <!--网络错误-->
+        <attr name="layout_network_error" format="integer" />
+        <!--加载失败-->
+        <attr name="layout_failed" format="integer" />
+    </declare-styleable>
+
+
+    <attr name="statusLayoutDefStyle" format="reference"/>
+</resources>
