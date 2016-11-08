@@ -1,4 +1,4 @@
-package com.aggregator.card.ui.activity;
+package com.aggregator.card.mock;
 
 import android.view.LayoutInflater;
 import android.view.View;

@@ -1,4 +1,4 @@
-package com.aggregator.card.core;
+package com.aggregator.card.mock;
 
 import com.aggregator.card.util.L;
 

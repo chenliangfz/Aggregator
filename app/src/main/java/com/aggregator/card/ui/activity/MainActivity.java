@@ -10,9 +10,10 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.aggregator.card.R;
-import com.aggregator.card.core.Mocks;
+import com.aggregator.card.mock.Mocks;
 import com.aggregator.card.core.inject.component.DaggerActivityComponent;
 import com.aggregator.card.core.mvp.extension.StatusActivityView;
+import com.aggregator.card.mock.SimpleRecyclerAdapter;
 import com.aggregator.card.ui.custom.recycle.HeaderAndFooterRecyclerView;
 
 import javax.inject.Inject;
