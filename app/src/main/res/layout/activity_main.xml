@@ -1,14 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.chenl.widgets.StatusLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:status="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@id/status_layout"
-    style="@style/DefaultSmartStyle"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/lightPink">
 
-    <com.aggregator.card.ui.custom.recycle.HeaderAndFooterRecyclerView
-        android:id="@+id/header_footer_recycler"
+    <RelativeLayout
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</com.chenl.widgets.StatusLayout>
+        android:layout_height="?actionBarSize"
+        android:background="@color/mediumViolet">
+
+        <ImageView
+            android:id="@+id/searcher"
+            android:layout_width="?actionBarSize"
+            android:layout_height="?actionBarSize"
+            android:layout_alignParentLeft="true"
+            android:padding="4dp"
+            android:src="@android:drawable/ic_menu_search" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/my_card_bag"
+            style="@style/Toolbar.Title.Style"/>
+
+        <ImageView
+            android:id="@+id/addition"
+            android:layout_width="?actionBarSize"
+            android:layout_height="?actionBarSize"
+            android:layout_alignParentRight="true"
+            android:padding="4dp"
+            android:src="@android:drawable/ic_menu_add" />
+
+        <ImageView
+            android:id="@+id/capture"
+            android:layout_width="?actionBarSize"
+            android:layout_height="?actionBarSize"
+            android:layout_toLeftOf="@+id/addition"
+            android:padding="4dp"
+            android:src="@android:drawable/ic_menu_camera" />
+    </RelativeLayout>
+
+    <com.chenl.widgets.StatusLayout
+        android:layout_below="@+id/toolbar"
+        android:id="@id/status_layout"
+        style="@style/DefaultSmartStyle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.aggregator.card.ui.custom.recycle.HeaderAndFooterRecyclerView
+            android:id="@+id/header_footer_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.chenl.widgets.StatusLayout>
+</RelativeLayout>

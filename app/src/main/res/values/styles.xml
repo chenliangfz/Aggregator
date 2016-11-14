@@ -17,4 +17,31 @@
         <item name="layout_failed">@layout/layout_default_failed</item>
     </style>
 
+    <style name="BaseStyle"/>
+
+    <style name="Login.Input.Style" parent="BaseStyle">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/mediumGray</item>
+        <item name="android:textColorHint">@color/mediumGray</item>
+    </style>
+
+
+    <style name="Toolbar.Title.Style" parent="BaseStyle">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+
+    <style name="Addition.Title.Style" parent="BaseStyle">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/mediumRed</item>
+    </style>
+
+    <style name="Addition.Input.Style" parent="BaseStyle">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textColorHint">@android:color/black</item>
+    </style>
+
+
 </resources>

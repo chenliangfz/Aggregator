@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#d9b6d9</color>
+    <color name="colorPrimaryDark">#FEE0F0</color>
     <color name="colorAccent">#FF4081</color>
+
+
+
+    <!-- light(亮) medium(中) dim（暗）dark(黑)-->
+    <color name="lightViolet">#d9b6d9</color>
+    <color name="mediumViolet">#ff81de</color>
+    <color name="violet">#dd0ae5</color>
+    <color name="darkRed">#d35e5e</color>
+    <color name="mediumRed">#fa4f70</color>
+    <color name="mediumGray">#a59a8e</color>
+    <color name="lightPink">#fff1f9</color>
 </resources>

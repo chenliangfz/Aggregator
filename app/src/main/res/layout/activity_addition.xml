@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightPink">
+
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/mediumViolet">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="?actionBarSize"
+            android:layout_height="?actionBarSize"
+            android:layout_alignParentLeft="true"
+            android:padding="4dp"
+            android:src="@android:drawable/ic_menu_revert" />
+
+        <TextView
+            style="@style/Toolbar.Title.Style"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/my_card_bag" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/business_hint"
+            style="@style/Addition.Title.Style"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="@string/business_title" />
+
+        <EditText
+            android:id="@+id/business"
+            style="@style/Addition.Input.Style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/business_hint"
+            android:layout_alignTop="@id/business_hint"
+            android:layout_toRightOf="@id/business_hint"
+            android:background="@null"
+            android:hint="@string/business_hint"
+            android:maxLines="1" />
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignLeft="@+id/business_hint"
+            android:layout_alignRight="@+id/business"
+            android:layout_below="@+id/business_hint"
+            android:layout_marginTop="8dp"
+            android:background="@color/lightViolet"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/screenshot_hint"
+            style="@style/Addition.Title.Style"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:layout_below="@+id/line"
+            android:text="@string/screenshot_title" />
+
+        <RelativeLayout
+            android:id="@+id/screenshot_captor"
+            style="@style/Addition.Input.Style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/screenshot_hint"
+            android:layout_below="@+id/line"
+            android:layout_toRightOf="@id/screenshot_hint"
+            android:background="@drawable/round_rect_dashed_addition_selector"
+            android:layerType="software">
+
+            <TextView
+                android:id="@+id/addition"
+                android:layout_width="wrap_content"
+                android:layout_centerInParent="true"
+                android:drawableTop="@android:drawable/ic_menu_add"
+                android:text="@string/addition_new"
+                android:textColor="@color/mediumViolet"
+                android:textSize="20sp"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/screenshot"
+                android:layout_width="match_parent"
+                android:minHeight="100dp"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+
+        <Button
+            android:id="@+id/sure"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:layout_below="@+id/screenshot_captor"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/round_rect_login_selector"
+            android:text="@string/sure"
+            android:textSize="@dimen/title_text_size" />
+    </RelativeLayout>
+</RelativeLayout>

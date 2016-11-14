@@ -3,13 +3,14 @@
     package="com.aggregator.card">
 
     <application
+        android:name=".core.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:name=".core.App"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activity.LaunchActivity"
+        <activity
+            android:name=".ui.activity.LaunchActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,10 +18,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.MainActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ui.activity.SimpleCaptureActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.account.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.SimpleCaptureActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.member.AdditionActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

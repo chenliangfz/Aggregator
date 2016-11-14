@@ -4,4 +4,22 @@
     <string name="copyright">
          聚合包电子会员卡聚合平台\nCopyright © 2016版权所有
     </string>
+
+    <string name="account_hint">请输入用户名</string>
+    <string name="password_hint">请输入密码</string>
+    <string name="login">登录</string>
+    <string name="forget_password">忘记密码</string>
+    <string name="logon">新用户注册</string>
+
+
+    <string name="my_card_bag">我的卡包</string>
+
+    <string name="addition">添加物理卡</string>
+    <string name="business_hint">请输入商户名</string>
+    <string name="sure">确定</string>
+    <string name="business_title">
+        商户名称&#160;:&#160;</string>
+    <string name="screenshot_title">
+        卡片截图&#160;:&#160;</string>
+    <string name="addition_new">添加新卡</string>
 </resources>

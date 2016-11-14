@@ -3,6 +3,8 @@ package com.aggregator.card.core.inject.component;
 
 import com.aggregator.card.core.inject.scope.ActivityScope;
 import com.aggregator.card.ui.activity.MainActivity;
+import com.aggregator.card.ui.activity.account.LoginActivity;
+import com.aggregator.card.ui.activity.member.AdditionActivity;
 
 import dagger.Component;
 
@@ -10,6 +12,10 @@ import dagger.Component;
 @Component(dependencies = AppComponent.class)
 public interface ActivityComponent {
 
+    void inject(LoginActivity loginActivity);
+
     void inject(MainActivity mainActivity);
+
+    void inject(AdditionActivity additionActivity);
 
 }
