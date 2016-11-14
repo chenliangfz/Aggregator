@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Aggregator</string>
+
+    <string name="copyright">
+         聚合包电子会员卡聚合平台\nCopyright © 2016版权所有
+    </string>
 </resources>
