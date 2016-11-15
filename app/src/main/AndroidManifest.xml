@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.aggregator.card">
 
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
     <application
         android:name=".core.App"
         android:allowBackup="true"
@@ -29,6 +34,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.member.AdditionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mock.MockMainActivity"
             android:screenOrientation="portrait" />
 
     </application>

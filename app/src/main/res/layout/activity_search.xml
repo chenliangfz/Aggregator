@@ -19,12 +19,12 @@
             android:src="@android:drawable/ic_menu_search" />
 
         <TextView
-            style="@style/Toolbar.Title.Style"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="@string/my_card_bag" />
+            android:text="@string/my_card_bag"
+            style="@style/Toolbar.Title.Style"/>
 
         <ImageView
             android:id="@+id/addition"
@@ -43,17 +43,16 @@
             android:src="@android:drawable/ic_menu_camera" />
     </RelativeLayout>
 
-    <com.chenl.widgets.StatusLayout
-        android:id="@id/status_layout"
-        style="@style/DefaultSmartStyle"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar">
-    </com.chenl.widgets.StatusLayout>
-    <com.chenl.widgets.stack.RecentStack
-        android:padding="20dp"
-        android:id="@+id/recent_stack"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar"/>
+    <!--<com.chenl.widgets.StatusLayout-->
+        <!--android:layout_below="@+id/toolbar"-->
+        <!--android:id="@id/status_layout"-->
+        <!--style="@style/DefaultSmartStyle"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+
+        <!--<com.aggregator.card.ui.custom.recycle.HeaderAndFooterRecyclerView-->
+            <!--android:id="@+id/header_footer_recycler"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent" />-->
+    <!--</com.chenl.widgets.StatusLayout>-->
 </RelativeLayout>
