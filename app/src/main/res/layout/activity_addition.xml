@@ -74,7 +74,8 @@
             android:layout_below="@+id/line"
             android:text="@string/screenshot_title" />
 
-        <RelativeLayout
+        <com.chenl.widgets.scale.SquareLayout
+            xmlns:square="http://schemas.android.com/apk/res-auto"
             android:id="@+id/screenshot_captor"
             style="@style/Addition.Input.Style"
             android:layout_width="match_parent"
@@ -83,7 +84,9 @@
             android:layout_below="@+id/line"
             android:layout_toRightOf="@id/screenshot_hint"
             android:background="@drawable/round_rect_dashed_addition_selector"
-            android:layerType="software">
+            android:layerType="software"
+            square:ProportionH="3"
+            square:ProportionW="7">
 
             <TextView
                 android:id="@+id/addition"
@@ -97,10 +100,9 @@
             <ImageView
                 android:id="@+id/screenshot"
                 android:layout_width="match_parent"
-                android:minHeight="100dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent" />
 
-        </RelativeLayout>
+        </com.chenl.widgets.scale.SquareLayout>
 
 
         <Button

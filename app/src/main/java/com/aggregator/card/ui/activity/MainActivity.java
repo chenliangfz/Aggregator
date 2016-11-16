@@ -8,7 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v7.widget.RecyclerView;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +18,7 @@ import android.widget.Toast;
 import com.aggregator.card.R;
 import com.aggregator.card.core.inject.component.DaggerActivityComponent;
 import com.aggregator.card.core.mvp.extension.StatusActivityView;
-import com.aggregator.card.mock.ColorFragment;
-import com.aggregator.card.mock.MockMainActivity;
+import com.aggregator.card.mock.CardFragment;
 import com.aggregator.card.mock.Mocks;
 import com.aggregator.card.ui.activity.member.AdditionActivity;
 import com.aggregator.card.util.ImageLoader;
@@ -70,7 +69,6 @@ public class MainActivity extends StatusActivityView<MainActivityPresenter> {
 
     @OnClick(R.id.searcher)
     void onClickSearcher() {
-        startActivity(new Intent(this, MockMainActivity.class));
     }
 
 
@@ -101,7 +99,7 @@ public class MainActivity extends StatusActivityView<MainActivityPresenter> {
         final int NUMBER_OF_FRAGMENTS = 20;
         ArrayList<Fragment> fragments = new ArrayList<>();
 
-        int startColor = getResources().getColor(R.color.lightPink);
+        int startColor = getResources().getColor(R.color.mediumViolet);
         int startR = Color.red(startColor);
         int startG = Color.green(startColor);
         int startB = Color.blue(startColor);
@@ -116,7 +114,7 @@ public class MainActivity extends StatusActivityView<MainActivityPresenter> {
         ValueInterpolator interpolatorB = new ValueInterpolator(0, NUMBER_OF_FRAGMENTS - 1, endB, startB);
 
         for (int i = 0; i < NUMBER_OF_FRAGMENTS; ++i) {
-            fragments.add(ColorFragment.newInstance(Color.argb(255, (int) interpolatorR.map(i), (int) interpolatorG.map(i), (int) interpolatorB.map(i))));
+            fragments.add(CardFragment.newInstance(Color.argb(255, (int) interpolatorR.map(i), (int) interpolatorG.map(i), (int) interpolatorB.map(i))));
         }
         ColorFragmentAdapter pageAdapter = new ColorFragmentAdapter(getSupportFragmentManager(), fragments);
         mFlippableStackView = (FlippableStackView) findViewById(R.id.flippable_stack_view);
@@ -156,7 +154,7 @@ public class MainActivity extends StatusActivityView<MainActivityPresenter> {
 
 
 
-    private class ColorFragmentAdapter extends FragmentPagerAdapter {
+    private class ColorFragmentAdapter extends FragmentStatePagerAdapter {
         private List<Fragment> fragments;
 
         public ColorFragmentAdapter(FragmentManager fm, List<Fragment> fragments) {
@@ -176,7 +174,7 @@ public class MainActivity extends StatusActivityView<MainActivityPresenter> {
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return " " + position + " ";
+            return String.valueOf(position);
         }
     }
 

@@ -35,9 +35,6 @@
         <activity
             android:name=".ui.activity.member.AdditionActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".mock.MockMainActivity"
-            android:screenOrientation="portrait" />
 
     </application>
 

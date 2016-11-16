@@ -16,15 +16,13 @@
 
 package com.aggregator.card.mock;
 
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 
 import com.aggregator.card.R;
 
@@ -33,14 +31,12 @@ import com.aggregator.card.R;
  * Created by Bartosz Lipinski
  * 28.01.15
  */
-public class ColorFragment extends Fragment {
+public class CardFragment extends Fragment {
 
-    private static final String EXTRA_COLOR = "com.bartoszlipinski.flippablestackview.fragment.ColorFragment.EXTRA_COLOR";
+    private static final String EXTRA_COLOR = "com.bartoszlipinski.flippablestackview.fragment.CardFragment.EXTRA_COLOR";
 
-    FrameLayout mMainLayout;
-
-    public static ColorFragment newInstance(int backgroundColor) {
-        ColorFragment fragment = new ColorFragment();
+    public static CardFragment newInstance(int backgroundColor) {
+        CardFragment fragment = new CardFragment();
         Bundle bdl = new Bundle();
         bdl.putInt(EXTRA_COLOR, backgroundColor);
         fragment.setArguments(bdl);
@@ -49,15 +45,11 @@ public class ColorFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_dummy, container, false);
-        Bundle bdl = getArguments();
-
-        mMainLayout = (FrameLayout) v.findViewById(R.id.main_layout);
-
-        LayerDrawable bgDrawable = (LayerDrawable) mMainLayout.getBackground();
-        GradientDrawable shape = (GradientDrawable) bgDrawable.findDrawableByLayerId(R.id.background_shape);
-        shape.setColor(bdl.getInt(EXTRA_COLOR));
-
-        return v;
+        View view = inflater.inflate(R.layout.fragment_dummy, container, false);
+        Bundle bundle = getArguments();
+        if (view instanceof CardView){
+            ((CardView)view).setCardBackgroundColor(bundle.getInt(EXTRA_COLOR));
+        }
+        return view;
     }
 }

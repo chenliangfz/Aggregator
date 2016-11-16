@@ -59,6 +59,7 @@
                 xmlns:orinted="http://schemas.android.com/apk/res-auto"
                 orinted:tabLayoutBackground="@drawable/oval_indicator_item_background_selector"
                 orinted:tabLayoutTextColor="@color/indicator_item_text_color_selector"
+                orinted:tabLayoutTextSize="6sp"
                 orinted:tabLayoutIndicatorHeight="0dp"
                 orinted:tabLayoutUnderlineHeight="0dp"
                 orinted:tabLayoutDividerColor="@android:color/transparent"

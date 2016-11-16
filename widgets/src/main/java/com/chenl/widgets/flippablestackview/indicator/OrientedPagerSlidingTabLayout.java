@@ -55,12 +55,6 @@ public class OrientedPagerSlidingTabLayout extends HorizontalScrollView {
         public int getPageIconResId(int position);
     }
 
-    // @formatter:off
-    private static final int[] ATTRS = new int[]{
-            android.R.attr.textSize,
-            android.R.attr.textColor
-    };
-    // @formatter:on
 
     private LinearLayout.LayoutParams defaultTabLayoutParams;
     private LinearLayout.LayoutParams expandedTabLayoutParams;
@@ -95,7 +89,7 @@ public class OrientedPagerSlidingTabLayout extends HorizontalScrollView {
     private int dividerWidth = 1;
 
     private int tabTextSize = 12;
-    private int tabTextColor = 0xFF666666;
+    private ColorStateList tabTextColor = ColorStateList.valueOf(android.R.color.white);
     private Typeface tabTypeface = null;
     private int tabTypefaceStyle = Typeface.BOLD;
 
@@ -126,33 +120,32 @@ public class OrientedPagerSlidingTabLayout extends HorizontalScrollView {
         tabsContainer.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
         addView(tabsContainer);
 
-        DisplayMetrics dm = getResources().getDisplayMetrics();
-        scrollOffset = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, scrollOffset, dm);
-        indicatorHeight = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, indicatorHeight, dm);
-        underlineHeight = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, underlineHeight, dm);
-        dividerPadding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dividerPadding, dm);
-        tabPadding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, tabPadding, dm);
-        dividerWidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dividerWidth, dm);
-        tabTextSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, tabTextSize, dm);
+        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
+        scrollOffset = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, scrollOffset, displayMetrics);
+        indicatorHeight = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, indicatorHeight, displayMetrics);
+        underlineHeight = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, underlineHeight, displayMetrics);
+        dividerPadding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dividerPadding, displayMetrics);
+        tabPadding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, tabPadding, displayMetrics);
+        dividerWidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dividerWidth, displayMetrics);
+        tabTextSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, tabTextSize, displayMetrics);
 
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.OrientedPagerSlidingTabLayout);
+        tabTextSize = typedArray.getDimensionPixelSize(R.styleable.OrientedPagerSlidingTabLayout_tabLayoutTextSize, tabTextSize);
+        tabTextColor = typedArray.getColorStateList(R.styleable.OrientedPagerSlidingTabLayout_tabLayoutTextColor);
+        indicatorColor = typedArray.getColor(R.styleable.OrientedPagerSlidingTabLayout_tabLayoutIndicatorColor, indicatorColor);
+        underlineColor = typedArray.getColor(R.styleable.OrientedPagerSlidingTabLayout_tabLayoutUnderlineColor, underlineColor);
+        dividerColor = typedArray.getColor(R.styleable.OrientedPagerSlidingTabLayout_tabLayoutDividerColor, dividerColor);
+        indicatorHeight = typedArray.getDimensionPixelSize(R.styleable.OrientedPagerSlidingTabLayout_tabLayoutIndicatorHeight, indicatorHeight);
+        underlineHeight = typedArray.getDimensionPixelSize(R.styleable.OrientedPagerSlidingTabLayout_tabLayoutUnderlineHeight, underlineHeight);
+        dividerPadding = typedArray.getDimensionPixelSize(R.styleable.OrientedPagerSlidingTabLayout_tabLayoutDividerPadding, dividerPadding);
+        tabPadding = typedArray.getDimensionPixelSize(R.styleable.OrientedPagerSlidingTabLayout_tabLayoutPaddingLeftRight, tabPadding);
+        tabBackgroundResId = typedArray.getResourceId(R.styleable.OrientedPagerSlidingTabLayout_tabLayoutBackground, tabBackgroundResId);
+        shouldExpand = typedArray.getBoolean(R.styleable.OrientedPagerSlidingTabLayout_tabLayoutShouldExpand, shouldExpand);
+        scrollOffset = typedArray.getDimensionPixelSize(R.styleable.OrientedPagerSlidingTabLayout_tabLayoutScrollOffset, scrollOffset);
+        textAllCaps = typedArray.getBoolean(R.styleable.OrientedPagerSlidingTabLayout_tabLayoutTextAllCaps, textAllCaps);
+        tabMargins = typedArray.getDimensionPixelSize(R.styleable.OrientedPagerSlidingTabLayout_tabLayoutMargins,tabMargins);
+        typedArray.recycle();
 
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.OrientedPagerSlidingTabLayout);
-
-        tabTextSize = a.getDimensionPixelSize(R.styleable.OrientedPagerSlidingTabLayout_tabLayoutTextSize, tabTextSize);
-        tabTextColor = a.getColor(R.styleable.OrientedPagerSlidingTabLayout_tabLayoutTextColor, tabTextColor);
-        indicatorColor = a.getColor(R.styleable.OrientedPagerSlidingTabLayout_tabLayoutIndicatorColor, indicatorColor);
-        underlineColor = a.getColor(R.styleable.OrientedPagerSlidingTabLayout_tabLayoutUnderlineColor, underlineColor);
-        dividerColor = a.getColor(R.styleable.OrientedPagerSlidingTabLayout_tabLayoutDividerColor, dividerColor);
-        indicatorHeight = a.getDimensionPixelSize(R.styleable.OrientedPagerSlidingTabLayout_tabLayoutIndicatorHeight, indicatorHeight);
-        underlineHeight = a.getDimensionPixelSize(R.styleable.OrientedPagerSlidingTabLayout_tabLayoutUnderlineHeight, underlineHeight);
-        dividerPadding = a.getDimensionPixelSize(R.styleable.OrientedPagerSlidingTabLayout_tabLayoutDividerPadding, dividerPadding);
-        tabPadding = a.getDimensionPixelSize(R.styleable.OrientedPagerSlidingTabLayout_tabLayoutPaddingLeftRight, tabPadding);
-        tabBackgroundResId = a.getResourceId(R.styleable.OrientedPagerSlidingTabLayout_tabLayoutBackground, tabBackgroundResId);
-        shouldExpand = a.getBoolean(R.styleable.OrientedPagerSlidingTabLayout_tabLayoutShouldExpand, shouldExpand);
-        scrollOffset = a.getDimensionPixelSize(R.styleable.OrientedPagerSlidingTabLayout_tabLayoutScrollOffset, scrollOffset);
-        textAllCaps = a.getBoolean(R.styleable.OrientedPagerSlidingTabLayout_tabLayoutTextAllCaps, textAllCaps);
-        tabMargins = a.getDimensionPixelSize(R.styleable.OrientedPagerSlidingTabLayout_tabLayoutMargins,tabMargins);
-        a.recycle();
 
         rectPaint = new Paint();
         rectPaint.setAntiAlias(true);
@@ -184,23 +177,16 @@ public class OrientedPagerSlidingTabLayout extends HorizontalScrollView {
     }
 
     public void notifyDataSetChanged() {
-
         tabsContainer.removeAllViews();
-
         tabCount = mPager.getAdapter().getCount();
-
         for (int i = 0; i < tabCount; i++) {
-
             if (mPager.getAdapter() instanceof IconTabProvider) {
                 addIconTab(i, ((IconTabProvider) mPager.getAdapter()).getPageIconResId(i));
             } else {
                 addTextTab(i, mPager.getAdapter().getPageTitle(i).toString());
             }
-
         }
-
         updateTabStyles();
-
         getViewTreeObserver().addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
 
             @SuppressWarnings("deprecation")
@@ -230,12 +216,9 @@ public class OrientedPagerSlidingTabLayout extends HorizontalScrollView {
     }
 
     private void addIconTab(final int position, int resId) {
-
         ImageButton tab = new ImageButton(getContext());
         tab.setImageResource(resId);
-
         addTab(position, tab);
-
     }
 
     private void addTab(final int position, View tab) {
@@ -253,25 +236,17 @@ public class OrientedPagerSlidingTabLayout extends HorizontalScrollView {
     }
 
     private void updateTabStyles() {
-
         for (int i = 0; i < tabCount; i++) {
-
             View childView = tabsContainer.getChildAt(i);
-
             if (tabBackgroundResId == -1) {
                 childView.setBackgroundDrawable(mTabBackgroundRes);
             } else {
                 childView.setBackgroundResource(tabBackgroundResId);
             }
-
             if (childView instanceof TextView) {
-
                 TextView tab = (TextView) childView;
-                tab.setTextSize(TypedValue.COMPLEX_UNIT_PX, tabTextSize);
-//                tab.setTypeface(tabTypeface, tabTypefaceStyle);
+                tab.setTextSize(tabTextSize);
                 tab.setTextColor(tabTextColor);
-                // setAllCaps() is only available from API 14, so the upper case is made manually if we are on a
-                // pre-ICS-build
                 if (textAllCaps) {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
                         tab.setAllCaps(true);
@@ -489,22 +464,8 @@ public class OrientedPagerSlidingTabLayout extends HorizontalScrollView {
         updateTabStyles();
     }
 
-    public int getTextSize() {
+    public float getTextSize() {
         return tabTextSize;
-    }
-
-    public void setTextColor(int textColor) {
-        this.tabTextColor = textColor;
-        updateTabStyles();
-    }
-
-    public void setTextColorResource(int resId) {
-        this.tabTextColor = getResources().getColor(resId);
-        updateTabStyles();
-    }
-
-    public int getTextColor() {
-        return tabTextColor;
     }
 
     public void setTypeface(Typeface typeface, int style) {
