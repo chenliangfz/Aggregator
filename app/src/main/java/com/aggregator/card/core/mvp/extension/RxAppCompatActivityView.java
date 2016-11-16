@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.aggregator.card.core.App;
+import com.aggregator.card.core.BaseActivity;
 import com.aggregator.card.core.inject.component.AppComponent;
 import com.aggregator.card.core.mvp.view.BaseView;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
@@ -18,34 +19,18 @@ import butterknife.Unbinder;
  * Created by ChenLiang on 16/11/4.
  */
 
-public abstract class RxAppCompatActivityView<P extends RxAppcompatActivityPresenter> extends RxAppCompatActivity implements BaseView {
+public abstract class RxAppCompatActivityView<P extends RxAppcompatActivityPresenter> extends BaseActivity implements BaseView {
 
     @Inject
     protected P presenter;
 
-    private Unbinder mButterKnifeBinder;
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(getLayoutResId());
-        mButterKnifeBinder = ButterKnife.bind(this);
-        initComponent();
+    protected void onViewCreated(@Nullable Bundle savedInstanceState){
         presenter.onAttach(this);
-        onViewCreated(savedInstanceState);
     }
-
-    @NonNull
-    protected abstract int getLayoutResId();
-
-    protected abstract void initComponent();
-
-    protected abstract void onViewCreated(@Nullable Bundle savedInstanceState);
 
     @Override
     public void onDestroy() {
         presenter.onDestroy();
-        mButterKnifeBinder.unbind();
         super.onDestroy();
     }
 

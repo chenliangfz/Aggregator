@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView xmlns:card="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/business_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card:cardCornerRadius="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.chenl.widgets.scale.SquareImageView
+                android:id="@+id/business_cover"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <com.chenl.widgets.scale.SquareLayout xmlns:square="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/lightPink"
+                square:ProportionH="1"
+                square:ProportionW="3">
+
+                <ImageView
+                    android:id="@+id/business_qr_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingBottom="4dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingTop="4dp" />
+            </com.chenl.widgets.scale.SquareLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>

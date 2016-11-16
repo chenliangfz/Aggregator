@@ -7,7 +7,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,9 +17,9 @@ import android.widget.Toast;
 import com.aggregator.card.R;
 import com.aggregator.card.core.inject.component.DaggerActivityComponent;
 import com.aggregator.card.core.mvp.extension.StatusActivityView;
-import com.aggregator.card.mock.CardFragment;
 import com.aggregator.card.mock.Mocks;
 import com.aggregator.card.ui.activity.member.AdditionActivity;
+import com.aggregator.card.ui.fragment.CardFragment;
 import com.aggregator.card.util.ImageLoader;
 import com.aggregator.card.util.L;
 import com.chenl.widgets.flippablestackview.FlippableStackView;
@@ -95,7 +94,7 @@ public class MainActivity extends StatusActivityView<MainActivityPresenter> {
         }
     }
 
-    void initFlippableStackView(){
+    void initFlippableStackView() {
         final int NUMBER_OF_FRAGMENTS = 20;
         ArrayList<Fragment> fragments = new ArrayList<>();
 
@@ -118,31 +117,31 @@ public class MainActivity extends StatusActivityView<MainActivityPresenter> {
         }
         ColorFragmentAdapter pageAdapter = new ColorFragmentAdapter(getSupportFragmentManager(), fragments);
         mFlippableStackView = (FlippableStackView) findViewById(R.id.flippable_stack_view);
-        mFlippableStackView.initStack(2, StackPageTransformer.Orientation.VERTICAL,0.8f,0.7f,0.9f, StackPageTransformer.Gravity.BOTTOM);
+        mFlippableStackView.initStack(2, StackPageTransformer.Orientation.VERTICAL, 0.8f, 0.7f, 0.9f, StackPageTransformer.Gravity.BOTTOM);
         mFlippableStackView.setAdapter(pageAdapter);
         mOrientedPagerSlidingTabLayout.setOrientedViewPager(mFlippableStackView);
     }
 
 
-    void initRecentStack(){
+    void initRecentStack() {
         mRecentStack.setAdapter(new CardStackAdapter(Mocks.mMockValuse));
     }
 
-    static class CardStackAdapter implements StackAdapter{
+    static class CardStackAdapter implements StackAdapter {
 
         ArrayList<String> mValues = new ArrayList<>();
 
-        CardStackAdapter(ArrayList<String> values){
+        CardStackAdapter(ArrayList<String> values) {
             mValues.addAll(values);
         }
 
         @Override
         public View getView(int position, ViewGroup parent) {
-            View childView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_membership_card,parent,false);
-            ImageView businessCover = ((ImageView)childView.findViewById(R.id.business_cover));
-            ImageLoader.load(mValues.get(position),businessCover);
-            ImageView businessQRCode = ((ImageView)childView.findViewById(R.id.business_qr_code));
-            ImageLoader.load(mValues.get(position),businessQRCode);
+            View childView = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_card, parent, false);
+            ImageView businessCover = ((ImageView) childView.findViewById(R.id.business_cover));
+            ImageLoader.load(mValues.get(position), businessCover);
+            ImageView businessQRCode = ((ImageView) childView.findViewById(R.id.business_qr_code));
+            ImageLoader.load(mValues.get(position), businessQRCode);
             return childView;
         }
 
@@ -151,7 +150,6 @@ public class MainActivity extends StatusActivityView<MainActivityPresenter> {
             return mValues.size();
         }
     }
-
 
 
     private class ColorFragmentAdapter extends FragmentStatePagerAdapter {
@@ -164,6 +162,7 @@ public class MainActivity extends StatusActivityView<MainActivityPresenter> {
 
         @Override
         public Fragment getItem(int position) {
+            L.e("position : " + position);
             return this.fragments.get(position);
         }
 
