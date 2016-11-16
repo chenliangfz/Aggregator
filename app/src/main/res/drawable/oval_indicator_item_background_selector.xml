@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true">
+        <shape xmlns:android="http://schemas.android.com/apk/res/android"
+            android:shape="oval"
+            android:useLevel="false">
+
+            <solid
+                android:color="@color/mediumViolet" />
+
+            <padding
+                android:bottom="1dp"
+                android:left="2dp"
+                android:right="2dp"
+                android:top="1dp" />
+            <size
+                android:width="40dp"
+                android:height="40dp" />
+        </shape>
+    </item>
+    <item android:state_pressed="true">
+        <shape xmlns:android="http://schemas.android.com/apk/res/android"
+            android:shape="oval"
+            android:useLevel="false">
+
+            <solid
+                android:color="@color/mediumViolet" />
+
+            <padding
+                android:bottom="1dp"
+                android:left="2dp"
+                android:right="2dp"
+                android:top="1dp" />
+            <size
+                android:width="?actionBarSize"
+                android:height="?actionBarSize" />
+        </shape>
+    </item>
+
+    <item android:state_selected="false">
+        <shape xmlns:android="http://schemas.android.com/apk/res/android"
+            android:shape="oval"
+            android:useLevel="false">
+
+            <solid
+                android:color="@android:color/white" />
+
+            <padding
+                android:bottom="1dp"
+                android:left="2dp"
+                android:right="2dp"
+                android:top="1dp" />
+            <size
+                android:width="40dp"
+                android:height="40dp" />
+        </shape>
+    </item>
+</selector>

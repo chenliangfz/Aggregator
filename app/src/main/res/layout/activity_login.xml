@@ -90,6 +90,7 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/round_rect_login_selector"
             android:text="@string/login"
+            android:textColor="@color/indicator_item_text_color_selector"
             android:textSize="@dimen/title_text_size" />
 
         <TextView

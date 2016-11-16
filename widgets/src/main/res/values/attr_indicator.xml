@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="OrientedPagerSlidingTabLayout">
+        <attr name="tabLayoutTextColor" format="color" />
+        <attr name="tabLayoutTextSize" format="dimension" />
+        <attr name="tabLayoutIndicatorColor" format="color" />
+        <attr name="tabLayoutUnderlineColor" format="color" />
+        <attr name="tabLayoutDividerColor" format="color" />
+        <attr name="tabLayoutIndicatorHeight" format="dimension" />
+        <attr name="tabLayoutUnderlineHeight" format="dimension" />
+        <attr name="tabLayoutDividerPadding" format="dimension" />
+        <attr name="tabLayoutPaddingLeftRight" format="dimension" />
+        <attr name="tabLayoutMargins" format="dimension" />
+        <attr name="tabLayoutScrollOffset" format="dimension" />
+        <attr name="tabLayoutBackground" format="reference" />
+        <attr name="tabLayoutShouldExpand" format="boolean" />
+        <attr name="tabLayoutTextAllCaps" format="boolean" />
+    </declare-styleable>
+</resources>

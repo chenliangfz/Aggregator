@@ -1,12 +1,12 @@
 /**
  * Copyright 2015 Bartosz Lipinski
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * <p>
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -16,7 +16,6 @@
 
 package com.aggregator.card.mock;
 
-import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -54,7 +53,7 @@ public class MockMainActivity extends AppCompatActivity {
         createViewPagerFragments();
         mPageAdapter = new ColorFragmentAdapter(getSupportFragmentManager(), mViewPagerFragments);
         mFlippableStack = (FlippableStackView) findViewById(R.id.flippable_stack_view);
-        mFlippableStack.initStack(2, StackPageTransformer.Orientation.VERTICAL,0.8f,0.7f,0.9f, StackPageTransformer.Gravity.BOTTOM);
+        mFlippableStack.initStack(2, StackPageTransformer.Orientation.VERTICAL, 0.8f, 0.7f, 0.9f, StackPageTransformer.Gravity.BOTTOM);
         mFlippableStack.setAdapter(mPageAdapter);
     }
 
@@ -80,22 +79,27 @@ public class MockMainActivity extends AppCompatActivity {
         }
     }
 
-    private class ColorFragmentAdapter extends FragmentPagerAdapter {
-        private List<Fragment> fragments;
+    private static class ColorFragmentAdapter extends FragmentPagerAdapter {
+        private List<Fragment> mFragments;
 
-        public ColorFragmentAdapter(FragmentManager fm, List<Fragment> fragments) {
+        public ColorFragmentAdapter(FragmentManager fm, List<Fragment> mFragments) {
             super(fm);
-            this.fragments = fragments;
+            this.mFragments = mFragments;
         }
 
         @Override
         public Fragment getItem(int position) {
-            return this.fragments.get(position);
+            return this.mFragments.get(position);
         }
 
         @Override
         public int getCount() {
-            return this.fragments.size();
+            return this.mFragments.size();
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return " " + position + " ";
         }
     }
 
