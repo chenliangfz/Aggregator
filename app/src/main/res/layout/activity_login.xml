@@ -2,8 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/colorBackground">
+    android:background="@color/colorBackground"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -29,9 +29,10 @@
             android:layout_alignBottom="@id/user_icon"
             android:layout_alignTop="@id/user_icon"
             android:layout_toRightOf="@id/user_icon"
-            android:maxLines="1"
             android:background="@null"
-            android:hint="@string/account_hint" />
+            android:hint="@string/account_hint"
+            android:maxLines="1"
+            android:text="account" />
 
         <View
             android:id="@+id/view"
@@ -64,11 +65,12 @@
             android:layout_alignBottom="@id/password_icon"
             android:layout_alignTop="@id/password_icon"
             android:layout_below="@+id/view"
-            android:inputType="textPassword"
             android:layout_toRightOf="@id/password_icon"
-            android:maxLines="1"
             android:background="@null"
-            android:hint="@string/password_hint" />
+            android:hint="@string/password_hint"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:text="password" />
 
         <View
             android:layout_width="match_parent"
@@ -99,9 +101,9 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/password_icon"
             android:layout_below="@+id/login"
-            android:text="@string/logon"
-            android:paddingTop="4dp"
             android:paddingBottom="4dp"
+            android:paddingTop="4dp"
+            android:text="@string/logon"
             android:textColor="@color/darkRed" />
 
         <TextView
@@ -110,9 +112,9 @@
             android:layout_height="wrap_content"
             android:layout_alignRight="@+id/login"
             android:layout_below="@+id/login"
-            android:text="@string/forget_password"
-            android:paddingTop="4dp"
             android:paddingBottom="4dp"
+            android:paddingTop="4dp"
+            android:text="@string/forget_password"
             android:textColor="@color/darkRed" />
     </RelativeLayout>
 

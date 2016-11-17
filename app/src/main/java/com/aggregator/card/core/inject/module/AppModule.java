@@ -3,6 +3,7 @@ package com.aggregator.card.core.inject.module;
 import android.content.Context;
 
 import com.aggregator.card.core.App;
+import com.aggregator.card.model.UserModel;
 import com.aggregator.card.source.SourceManager;
 import com.aggregator.card.source.network.ApiService;
 
@@ -29,5 +30,11 @@ public class AppModule {
     @Provides
     SourceManager provideSourceManager(ApiService apiService) {
         return new SourceManager(apiService);
+    }
+    
+    @Singleton
+    @Provides
+    UserModel provideUserModel(Context context){
+        return new UserModel().getCache(context);
     }
 }

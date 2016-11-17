@@ -1,7 +1,5 @@
 package com.aggregator.card.mock;
 
-import com.aggregator.card.util.L;
-
 import java.util.ArrayList;
 
 /**
@@ -9,12 +7,15 @@ import java.util.ArrayList;
  */
 
 public class Mocks {
-    public static ArrayList<String> mMockValuse = new ArrayList<>();
+    public static ArrayList<String> mMockValues = new ArrayList<>();
 
     static {
         for (int i = 0; i <= 20; i++) {
-            mMockValuse.add("MockValue:" + i);
+            mMockValues.add("MockValue:" + i);
         }
-        L.e("Mocks "+mMockValuse.size());
     }
+
+    public static String USER_ACCOUNT = "account";
+
+    public static String USER_PASSWORD = "password";
 }

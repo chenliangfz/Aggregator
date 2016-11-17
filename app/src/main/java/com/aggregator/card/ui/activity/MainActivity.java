@@ -18,6 +18,7 @@ import com.aggregator.card.R;
 import com.aggregator.card.core.inject.component.DaggerActivityComponent;
 import com.aggregator.card.core.mvp.extension.StatusActivityView;
 import com.aggregator.card.mock.Mocks;
+import com.aggregator.card.model.UserModel;
 import com.aggregator.card.ui.activity.member.AdditionActivity;
 import com.aggregator.card.ui.fragment.CardFragment;
 import com.aggregator.card.util.ImageLoader;
@@ -31,6 +32,8 @@ import com.chenl.widgets.stack.StackAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -48,6 +51,9 @@ public class MainActivity extends StatusActivityView<MainActivityPresenter> {
 
     @BindView(R.id.flippable_stack_view)
     FlippableStackView mFlippableStackView;
+
+    @Inject
+    UserModel mUserModel;
 
     @NonNull
     @Override
@@ -89,7 +95,6 @@ public class MainActivity extends StatusActivityView<MainActivityPresenter> {
                 && requestCode == REQUEST_QR_CODE
                 && data != null) {
             String result = data.getStringExtra("result");
-            L.e("result:" + result);
             Toast.makeText(MainActivity.this, result, Toast.LENGTH_SHORT).show();
         }
     }
@@ -117,14 +122,14 @@ public class MainActivity extends StatusActivityView<MainActivityPresenter> {
         }
         ColorFragmentAdapter pageAdapter = new ColorFragmentAdapter(getSupportFragmentManager(), fragments);
         mFlippableStackView = (FlippableStackView) findViewById(R.id.flippable_stack_view);
-        mFlippableStackView.initStack(2, StackPageTransformer.Orientation.VERTICAL, 0.8f, 0.7f, 0.9f, StackPageTransformer.Gravity.BOTTOM);
+        mFlippableStackView.initStack(4, StackPageTransformer.Orientation.VERTICAL, 0.8f, 0.7f, 0.9f, StackPageTransformer.Gravity.BOTTOM);
         mFlippableStackView.setAdapter(pageAdapter);
         mOrientedPagerSlidingTabLayout.setOrientedViewPager(mFlippableStackView);
     }
 
 
     void initRecentStack() {
-        mRecentStack.setAdapter(new CardStackAdapter(Mocks.mMockValuse));
+        mRecentStack.setAdapter(new CardStackAdapter(Mocks.mMockValues));
     }
 
     static class CardStackAdapter implements StackAdapter {
@@ -162,7 +167,6 @@ public class MainActivity extends StatusActivityView<MainActivityPresenter> {
 
         @Override
         public Fragment getItem(int position) {
-            L.e("position : " + position);
             return this.fragments.get(position);
         }
 

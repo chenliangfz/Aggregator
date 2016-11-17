@@ -16,9 +16,11 @@ import android.widget.ImageView;
 
 import com.aggregator.card.R;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.GlideBuilder;
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
+import com.bumptech.glide.load.engine.cache.ExternalCacheDiskCacheFactory;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.animation.GlideAnimation;
@@ -52,8 +54,15 @@ public class ImageLoader {
     }
 
     private static void load(RequestManager requestManager, String url, ImageView imageView) {
-        requestManager.load(url).thumbnail(0.1f).crossFade().placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher)
+        requestManager
+                .load(url).thumbnail(0.1f).crossFade().placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher)
                 .into(imageView);
+    }
+
+    public static void loadCover(String url, ImageView imageView){
+        Context context = imageView.getContext();
+        final int diskCacheSize = 1024 * 1024 * 30;//最多可以缓存多少字节的数据
+        new GlideBuilder(context).setDiskCache(new ExternalCacheDiskCacheFactory(context, "Aggregator", diskCacheSize));
     }
 
     public static class CircleTransform extends BitmapTransformation {

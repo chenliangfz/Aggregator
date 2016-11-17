@@ -92,6 +92,4 @@ public class CameraGalleryUtil {
         intent.putExtra("return-data", true);
         activity.startActivityForResult(intent, PHOTO_REQUEST_CUT);
     }
-
-
 }
