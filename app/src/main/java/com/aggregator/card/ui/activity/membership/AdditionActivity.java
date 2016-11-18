@@ -1,4 +1,4 @@
-package com.aggregator.card.ui.activity.member;
+package com.aggregator.card.ui.activity.membership;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -23,8 +23,8 @@ import butterknife.OnClick;
 
 public class AdditionActivity extends RxAppCompatActivityView<AdditionPresenter> {
 
-    @BindView(R.id.business)
-    EditText mEdtBusiness;
+    @BindView(R.id.shop_name)
+    EditText mEdtShopName;
 
     @BindView(R.id.screenshot)
     ImageView mCardScreenshot;

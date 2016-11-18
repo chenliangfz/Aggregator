@@ -5,6 +5,7 @@ import com.aggregator.card.core.inject.module.ApiModule;
 import com.aggregator.card.core.inject.module.AppModule;
 import com.aggregator.card.model.UserModel;
 import com.aggregator.card.source.SourceManager;
+import com.aggregator.card.source.greendao.DaoSession;
 
 import javax.inject.Singleton;
 
@@ -17,4 +18,6 @@ public interface AppComponent {
     SourceManager getSourceManager();
 
     UserModel getUserModel();
+
+    DaoSession getDaoSession();
 }

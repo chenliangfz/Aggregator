@@ -32,6 +32,11 @@ android {
         textOutput 'stdout'
         fatal 'UnusedResources'
     }
+    greendao{
+        schemaVersion 1
+        daoPackage 'com.aggregator.card.source.greendao'
+        targetGenDir 'src/main/java'
+    }
 }
 
 configurations.all {
@@ -70,8 +75,9 @@ dependencies {
     compile 'com.orhanobut:logger:1.15'
     //glide
     compile 'com.github.bumptech.glide:glide:3.7.0'
-    // Pull to refresh
-    compile 'in.srain.cube:ultra-ptr:1.0.11'
+    compile 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
+    //greendao
+    compile 'org.greenrobot:greendao:3.2.0'
     compile project(':qrcode')
     compile project(':widgets')
 }

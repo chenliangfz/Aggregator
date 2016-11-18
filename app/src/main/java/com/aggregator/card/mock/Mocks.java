@@ -18,4 +18,6 @@ public class Mocks {
     public static String USER_ACCOUNT = "account";
 
     public static String USER_PASSWORD = "password";
+
+    public static String FAVICON= "http://note.youdao.com/favicon.ico";
 }

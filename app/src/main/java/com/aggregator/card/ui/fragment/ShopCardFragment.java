@@ -8,6 +8,7 @@ import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.aggregator.card.BuildConfig;
 import com.aggregator.card.R;
 import com.aggregator.card.core.BaseFragment;
 
@@ -17,26 +18,26 @@ import butterknife.BindView;
  * Created by ChenLiang on 16/11/16.
  */
 
-public class CardFragment extends BaseFragment {
+public class ShopCardFragment extends BaseFragment {
 
-    private static final String EXTRA_COLOR = "com.aggregator.card.EXTRA_COLOR";
+    private static final String EXTRA_COLOR = BuildConfig.APPLICATION_ID + ".EXTRA_COLOR";
 
-    public static CardFragment newInstance(int backgroundColor) {
-        CardFragment fragment = new CardFragment();
+    public static ShopCardFragment newInstance(int backgroundColor) {
+        ShopCardFragment fragment = new ShopCardFragment();
         Bundle bundle = new Bundle();
         bundle.putInt(EXTRA_COLOR, backgroundColor);
         fragment.setArguments(bundle);
         return fragment;
     }
 
-    @BindView(R.id.business_card)
-    CardView mBusinessCard;
+    @BindView(R.id.shop_card)
+    CardView mShopCard;
 
-    @BindView(R.id.business_cover)
-    ImageView mBusinessCover;
+    @BindView(R.id.shop_cover)
+    ImageView mShopCover;
 
-    @BindView(R.id.business_qr_code)
-    ImageView mBusinessQRCode;
+    @BindView(R.id.shop_qr_code)
+    ImageView mShopQRCode;
 
     @NonNull
     @Override
@@ -49,8 +50,8 @@ public class CardFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         Bundle bundle = getArguments();
         if (bundle != null) {
-            mBusinessCard.setCardBackgroundColor(bundle.getInt(EXTRA_COLOR, Color.WHITE));
-            mBusinessCover.setImageResource(R.mipmap.ic_launcher);
+            mShopCard.setCardBackgroundColor(bundle.getInt(EXTRA_COLOR, Color.WHITE));
+            mShopCover.setImageResource(R.mipmap.ic_launcher);
         }
     }
 }

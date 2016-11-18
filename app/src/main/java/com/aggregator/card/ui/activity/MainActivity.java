@@ -19,10 +19,9 @@ import com.aggregator.card.core.inject.component.DaggerActivityComponent;
 import com.aggregator.card.core.mvp.extension.StatusActivityView;
 import com.aggregator.card.mock.Mocks;
 import com.aggregator.card.model.UserModel;
-import com.aggregator.card.ui.activity.member.AdditionActivity;
-import com.aggregator.card.ui.fragment.CardFragment;
+import com.aggregator.card.ui.activity.membership.AdditionActivity;
+import com.aggregator.card.ui.fragment.ShopCardFragment;
 import com.aggregator.card.util.ImageLoader;
-import com.aggregator.card.util.L;
 import com.chenl.widgets.flippablestackview.FlippableStackView;
 import com.chenl.widgets.flippablestackview.StackPageTransformer;
 import com.chenl.widgets.flippablestackview.indicator.OrientedPagerSlidingTabLayout;
@@ -118,7 +117,7 @@ public class MainActivity extends StatusActivityView<MainActivityPresenter> {
         ValueInterpolator interpolatorB = new ValueInterpolator(0, NUMBER_OF_FRAGMENTS - 1, endB, startB);
 
         for (int i = 0; i < NUMBER_OF_FRAGMENTS; ++i) {
-            fragments.add(CardFragment.newInstance(Color.argb(255, (int) interpolatorR.map(i), (int) interpolatorG.map(i), (int) interpolatorB.map(i))));
+            fragments.add(ShopCardFragment.newInstance(Color.argb(255, (int) interpolatorR.map(i), (int) interpolatorG.map(i), (int) interpolatorB.map(i))));
         }
         ColorFragmentAdapter pageAdapter = new ColorFragmentAdapter(getSupportFragmentManager(), fragments);
         mFlippableStackView = (FlippableStackView) findViewById(R.id.flippable_stack_view);
@@ -143,9 +142,9 @@ public class MainActivity extends StatusActivityView<MainActivityPresenter> {
         @Override
         public View getView(int position, ViewGroup parent) {
             View childView = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_card, parent, false);
-            ImageView businessCover = ((ImageView) childView.findViewById(R.id.business_cover));
+            ImageView businessCover = ((ImageView) childView.findViewById(R.id.shop_cover));
             ImageLoader.load(mValues.get(position), businessCover);
-            ImageView businessQRCode = ((ImageView) childView.findViewById(R.id.business_qr_code));
+            ImageView businessQRCode = ((ImageView) childView.findViewById(R.id.shop_qr_code));
             ImageLoader.load(mValues.get(position), businessQRCode);
             return childView;
         }

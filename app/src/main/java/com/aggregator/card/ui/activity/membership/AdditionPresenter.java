@@ -1,4 +1,4 @@
-package com.aggregator.card.ui.activity.member;
+package com.aggregator.card.ui.activity.membership;
 
 import com.aggregator.card.core.mvp.extension.RxAppcompatActivityPresenter;
 

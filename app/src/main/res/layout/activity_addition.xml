@@ -43,7 +43,7 @@
             android:text="@string/business_title" />
 
         <EditText
-            android:id="@+id/business"
+            android:id="@+id/shop_name"
             style="@style/Addition.Input.Style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_alignLeft="@+id/business_hint"
-            android:layout_alignRight="@+id/business"
+            android:layout_alignRight="@+id/shop_name"
             android:layout_below="@+id/business_hint"
             android:layout_marginTop="8dp"
             android:background="@color/lightViolet"

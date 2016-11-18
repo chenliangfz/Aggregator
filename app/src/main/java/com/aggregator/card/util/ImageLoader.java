@@ -1,35 +1,31 @@
 package com.aggregator.card.util;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
-import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
 import android.widget.ImageView;
 
 import com.aggregator.card.R;
+import com.aggregator.card.core.App;
+import com.aggregator.card.model.CacheModel;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.GlideBuilder;
 import com.bumptech.glide.RequestManager;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.load.engine.cache.ExternalCacheDiskCacheFactory;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.target.Target;
 
-import java.io.File;
-import java.io.IOException;
-
-import javax.inject.Inject;
+import rx.Observable;
+import rx.Subscriber;
 
 /**
  * Created by ChenLiang on 16/10/13.
@@ -59,10 +55,20 @@ public class ImageLoader {
                 .into(imageView);
     }
 
-    public static void loadCover(String url, ImageView imageView){
-        Context context = imageView.getContext();
-        final int diskCacheSize = 1024 * 1024 * 30;//最多可以缓存多少字节的数据
-        new GlideBuilder(context).setDiskCache(new ExternalCacheDiskCacheFactory(context, "Aggregator", diskCacheSize));
+    public static void loadCover(String url, final ImageView imageView) {
+        final Context context = imageView.getContext();
+        Glide.with(context)
+                .load(url)
+                .thumbnail(0.1f)
+                .crossFade()
+                .placeholder(R.mipmap.ic_launcher)
+                .error(R.mipmap.ic_launcher)
+                .into(new SimpleTarget<GlideDrawable>() {
+                    @Override
+                    public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
+                        imageView.setImageDrawable(resource);
+                    }
+                });
     }
 
     public static class CircleTransform extends BitmapTransformation {
