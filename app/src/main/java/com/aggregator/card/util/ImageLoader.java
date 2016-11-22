@@ -12,20 +12,16 @@ import android.widget.ImageView;
 import com.aggregator.card.R;
 import com.aggregator.card.core.App;
 import com.aggregator.card.model.CacheModel;
+import com.aggregator.card.source.greendao.CacheModelDao;
+import com.aggregator.card.source.greendao.DaoSession;
+import com.bumptech.glide.DrawableRequestBuilder;
+import com.bumptech.glide.GenericRequestBuilder;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.GlideBuilder;
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
-import com.bumptech.glide.load.engine.cache.ExternalCacheDiskCacheFactory;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
-import com.bumptech.glide.request.target.Target;
-
-import rx.Observable;
-import rx.Subscriber;
 
 /**
  * Created by ChenLiang on 16/10/13.
@@ -55,20 +51,38 @@ public class ImageLoader {
                 .into(imageView);
     }
 
-    public static void loadCover(String url, final ImageView imageView) {
+    public static void loadCover(final String url, final ImageView imageView) {
         final Context context = imageView.getContext();
-        Glide.with(context)
-                .load(url)
-                .thumbnail(0.1f)
-                .crossFade()
-                .placeholder(R.mipmap.ic_launcher)
-                .error(R.mipmap.ic_launcher)
-                .into(new SimpleTarget<GlideDrawable>() {
-                    @Override
-                    public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
-                        imageView.setImageDrawable(resource);
-                    }
-                });
+        CacheModel cacheModel = CacheModel.getCache((App) context.getApplicationContext(), url);
+        if (cacheModel != null) {
+            L.e(cacheModel.toString());
+            Glide.with(context)
+                    .load(cacheModel.bitmapBytes)
+                    .thumbnail(0.1f)
+                    .placeholder(R.mipmap.ic_launcher)
+                    .error(R.mipmap.ic_launcher)
+                    .into(imageView);
+        } else {
+            Glide.with(context)
+                    .load(url)
+                    .asBitmap()
+                    .thumbnail(0.1f)
+                    .placeholder(R.mipmap.ic_launcher)
+                    .error(R.mipmap.ic_launcher)
+                    .into(new SimpleTarget<Bitmap>() {
+                        @Override
+                        public void onResourceReady(Bitmap bitmap, GlideAnimation<? super Bitmap> glideAnimation) {
+                            L.e("bitmap : " + String.valueOf(bitmap));
+                            if (bitmap != null) {
+                                CacheModel cacheModel = new CacheModel();
+                                cacheModel.bitmapBytes = BitmapUtils.bitmap2Bytes(bitmap);
+                                cacheModel.url = url;
+                                cacheModel.saveCache((App) context.getApplicationContext());
+                                imageView.setImageBitmap(bitmap);
+                            }
+                        }
+                    });
+        }
     }
 
     public static class CircleTransform extends BitmapTransformation {

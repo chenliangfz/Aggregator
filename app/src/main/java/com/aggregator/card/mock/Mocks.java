@@ -19,5 +19,5 @@ public class Mocks {
 
     public static String USER_PASSWORD = "password";
 
-    public static String FAVICON= "http://note.youdao.com/favicon.ico";
+    public static String FAVICON= "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=850685754,900892460&fm=58";
 }

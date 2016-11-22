@@ -18,7 +18,7 @@ public class BitmapUtils {
     /*
      * Bitmap → byte[]
      */
-    public static byte[] Bitmap2Bytes(Bitmap bm) {
+    public static byte[] bitmap2Bytes(Bitmap bm) {
         if (bm == null) {
             return null;
         }
@@ -30,11 +30,11 @@ public class BitmapUtils {
     /*
      * byte[] → Bitmap
      */
-    public static Bitmap Bytes2Bitmap(byte[] b) {
-        if (b.length == 0) {
+    public static Bitmap bytes2Bitmap(byte[] bytes) {
+        if (bytes.length == 0) {
             return null;
         }
-        return BitmapFactory.decodeByteArray(b, 0, b.length);
+        return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
     }
 
     /*
@@ -60,6 +60,10 @@ public class BitmapUtils {
         return bitmap;
     }
 
+    public static byte[] drawable2Bytes(Drawable drawable){
+        return bitmap2Bytes(drawable2Bitmap(drawable));
+    }
+
     /*
      * Bitmap → Drawable
      */
@@ -70,4 +74,6 @@ public class BitmapUtils {
         }
         return new BitmapDrawable(bm);
     }
+
+
 }

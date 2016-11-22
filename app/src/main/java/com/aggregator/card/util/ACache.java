@@ -26,10 +26,6 @@ import org.json.JSONObject;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.PixelFormat;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 
 import com.aggregator.card.BuildConfig;
@@ -423,7 +419,7 @@ public class ACache {
      * @param value 保存的bitmap数据
      */
     public void put(String key, Bitmap value) {
-        put(key, BitmapUtils.Bitmap2Bytes(value));
+        put(key, BitmapUtils.bitmap2Bytes(value));
     }
 
     /**
@@ -434,7 +430,7 @@ public class ACache {
      * @param saveTime 保存的时间，单位：秒
      */
     public void put(String key, Bitmap value, int saveTime) {
-        put(key, BitmapUtils.Bitmap2Bytes(value), saveTime);
+        put(key, BitmapUtils.bitmap2Bytes(value), saveTime);
     }
 
     /**
@@ -447,7 +443,7 @@ public class ACache {
         if (getAsBinary(key) == null) {
             return null;
         }
-        return BitmapUtils.Bytes2Bitmap(getAsBinary(key));
+        return BitmapUtils.bytes2Bitmap(getAsBinary(key));
     }
 
     // =======================================
@@ -485,7 +481,7 @@ public class ACache {
         if (getAsBinary(key) == null) {
             return null;
         }
-        return BitmapUtils.bitmap2Drawable(BitmapUtils.Bytes2Bitmap(getAsBinary(key)));
+        return BitmapUtils.bitmap2Drawable(BitmapUtils.bytes2Bitmap(getAsBinary(key)));
     }
 
     /**

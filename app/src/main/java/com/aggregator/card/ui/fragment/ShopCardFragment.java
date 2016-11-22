@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import com.aggregator.card.BuildConfig;
 import com.aggregator.card.R;
 import com.aggregator.card.core.BaseFragment;
+import com.aggregator.card.mock.Mocks;
+import com.aggregator.card.util.ImageLoader;
 
 import butterknife.BindView;
 
@@ -53,5 +55,6 @@ public class ShopCardFragment extends BaseFragment {
             mShopCard.setCardBackgroundColor(bundle.getInt(EXTRA_COLOR, Color.WHITE));
             mShopCover.setImageResource(R.mipmap.ic_launcher);
         }
+        ImageLoader.loadCover(Mocks.FAVICON,mShopCover);
     }
 }
