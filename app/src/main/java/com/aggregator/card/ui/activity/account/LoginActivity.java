@@ -31,7 +31,6 @@ import rx.Observer;
 
 public class LoginActivity extends RxAppCompatActivityView<LoginPresenter> {
 
-
     @BindView(R.id.account)
     EditText mEdtAccount;
 

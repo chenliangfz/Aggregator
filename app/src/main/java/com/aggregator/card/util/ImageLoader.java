@@ -72,7 +72,6 @@ public class ImageLoader {
                     .into(new SimpleTarget<Bitmap>() {
                         @Override
                         public void onResourceReady(Bitmap bitmap, GlideAnimation<? super Bitmap> glideAnimation) {
-                            L.e("bitmap : " + String.valueOf(bitmap));
                             if (bitmap != null) {
                                 CacheModel cacheModel = new CacheModel();
                                 cacheModel.bitmapBytes = BitmapUtils.bitmap2Bytes(bitmap);

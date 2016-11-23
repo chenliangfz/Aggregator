@@ -6,12 +6,16 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 
 import com.aggregator.card.R;
 import com.aggregator.card.core.BaseActivity;
 import com.aggregator.card.core.inject.component.DaggerActivityComponent;
 import com.aggregator.card.model.UserModel;
 import com.aggregator.card.ui.activity.account.LoginActivity;
+import com.aggregator.card.util.L;
+
+import java.io.UnsupportedEncodingException;
 
 import javax.inject.Inject;
 
